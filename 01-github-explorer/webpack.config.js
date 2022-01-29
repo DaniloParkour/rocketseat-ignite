@@ -3,6 +3,8 @@
 //we navigate using "//" for example.
 const path = require('path');
 
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+
 module.exports = {
 
   //__dirname is the current file directory
@@ -22,6 +24,14 @@ module.exports = {
   resolve: {
     extensions: ['.js', '.jsx'],
   },
+
+  plugins: [
+    //Configure automatic react jsx injects content on html
+    //Now, open the index.html from "dist" folder and not more on "public"
+    new HtmlWebpackPlugin({
+      template: path.resolve(__dirname, 'public', 'index.html')
+    })
+  ],
 
   //Teach how to manage different files
   module: {
