@@ -7,6 +7,10 @@ module.exports = {
 
   //__dirname is the current file directory
 
+  //Mode development to webpack not create a performed bundle for produtcion,
+  //and create just a fast bundle for develop
+  mode: 'development',
+
   //Define the main file application (src/index.jsx)
   entry: path.resolve(__dirname, 'src', 'index.jsx'),
   
