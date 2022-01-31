@@ -27,7 +27,10 @@ module.exports = {
 
   //Configure webpack-dev-server to run automaticaly when project is modified
   devServer: {
-    contentBase: path.resolve(__dirname, 'public'),
+    // contentBase: path.resolve(__dirname, 'public'),
+    static : {
+      directory : path.join(__dirname, "public/")
+    },
   },
 
   plugins: [
