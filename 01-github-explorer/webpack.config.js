@@ -55,6 +55,13 @@ module.exports = {
         test: /\.jsx$/, //Verify any ".jsx" file
         exclude: /node_modules/,
         use: 'babel-loader' //Use babel-loader to convert .jsx that not is in node_modules
+      },
+
+      //Use loaders to import CSS from JS scripts (yarn add style-loader css-loader -D)
+      {
+        test: /\.scss$/,
+        exclude: /node_modules/,
+        use: ['style-loader', 'css-loader', 'sass-loader'],
       }
     ],
   }
