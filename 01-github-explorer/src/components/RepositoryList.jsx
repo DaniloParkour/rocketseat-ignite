@@ -1,8 +1,5 @@
 import { RepositoryItem } from "./RepositoryItem";
 
-const repositoryName = 'unform';
-//To use repositoryName on JS ewe use "{}" -> {dataName}
-
 const repository = {
   name: 'unform',
   description: 'Forms in React',
