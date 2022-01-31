@@ -25,6 +25,11 @@ module.exports = {
     extensions: ['.js', '.jsx'],
   },
 
+  //Configure webpack-dev-server to run automaticaly when project is modified
+  devServer: {
+    contentBase: path.resolve(__dirname, 'public'),
+  },
+
   plugins: [
     //Configure automatic react jsx injects content on html
     //Now, open the index.html from "dist" folder and not more on "public"
