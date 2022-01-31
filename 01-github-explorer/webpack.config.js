@@ -13,6 +13,9 @@ module.exports = {
   //and create just a fast bundle for develop
   mode: 'development',
 
+  //Configure SourceMap (are different kind os sourcemaps, for development we use eval-source-map)
+  devtool: 'eval-source-map',
+
   //Define the main file application (src/index.jsx)
   entry: path.resolve(__dirname, 'src', 'index.jsx'),
   
