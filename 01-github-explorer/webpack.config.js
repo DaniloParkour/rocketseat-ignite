@@ -4,6 +4,7 @@
 const path = require('path');
 
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
 
 //NODE_END must be configured on host
 //For UNIX use command => NODE_ENV=production yarn webpack for Windows, can be installed the cross-env (yarn add crss-env)
@@ -38,15 +39,18 @@ module.exports = {
     static : {
       directory : path.join(__dirname, "public/")
     },
+    hot: true, //To enable FastRefresh
   },
 
   plugins: [
+    isDevelopment && new ReactRefreshWebpackPlugin(),
+
     //Configure automatic react jsx injects content on html
     //Now, open the index.html from "dist" folder and not more on "public"
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, 'public', 'index.html')
     })
-  ],
+  ].filter(Boolean), //Remove boolean values (when isDevelopment is false for example)
 
   //Teach how to manage different files
   module: {
@@ -54,7 +58,15 @@ module.exports = {
       {
         test: /\.jsx$/, //Verify any ".jsx" file
         exclude: /node_modules/,
-        use: 'babel-loader' //Use babel-loader to convert .jsx that not is in node_modules
+        // use: 'babel-loader' //Use babel-loader to convert .jsx that not is in node_modules
+        use: {
+          loader: 'babel-loader',
+          options: {
+            plugins: [
+              isDevelopment && require.resolve('react-refresh/babel')
+            ].filter(Boolean)
+          }
+        }
       },
 
       //Use loaders to import CSS from JS scripts (yarn add style-loader css-loader -D)
