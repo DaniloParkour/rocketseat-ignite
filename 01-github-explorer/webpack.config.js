@@ -22,7 +22,7 @@ module.exports = {
   devtool: isDevelopment ? 'eval-source-map' : 'source-map', //source-map is most detailed
 
   //Define the main file application (src/index.jsx)
-  entry: path.resolve(__dirname, 'src', 'index.jsx'),
+  entry: path.resolve(__dirname, 'src', 'index.tsx'),
   
   output: {
     path: path.resolve(__dirname, 'dist'),
@@ -30,7 +30,7 @@ module.exports = {
   },
 
   resolve: {
-    extensions: ['.js', '.jsx'],
+    extensions: ['.js', '.jsx', '.ts', '.tsx'],
   },
 
   //Configure webpack-dev-server to run automaticaly when project is modified
@@ -56,7 +56,7 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.jsx$/, //Verify any ".jsx" file
+        test: /\.(j|t)sx$/, //Verify any ".jsx" or ".tsx" file
         exclude: /node_modules/,
         // use: 'babel-loader' //Use babel-loader to convert .jsx that not is in node_modules
         use: {
