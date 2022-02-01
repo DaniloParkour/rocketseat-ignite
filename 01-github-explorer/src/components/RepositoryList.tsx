@@ -5,6 +5,12 @@ import { useState, useEffect } from 'react';
 
 import '../styles/repositories.scss';
 
+interface Repository {
+  name: string;
+  description: string;
+  html_url: string;
+}
+
 const repository = {
   name: 'unform',
   description: 'Forms in React',
@@ -13,7 +19,7 @@ const repository = {
 
 export function RepositoryList() {
 
-  const [repositories, setRepositories] = useState([]);
+  const [repositories, setRepositories] = useState<Repository[]>([]);
 
   //2 argments: 1 - The Function, 2 - What To Watch For Changes
   useEffect(() => {
