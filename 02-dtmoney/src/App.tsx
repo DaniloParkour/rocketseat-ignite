@@ -1,7 +1,9 @@
 // import styled from 'styled-components';
+import { useState } from 'react';
 import { Dashboard } from './components/Dashboard';
 import { Header } from './components/Header';
 import { GlobalStyle } from './styles/global';
+import Modal from 'react-modal';
 
 //Create a styled component. Is a react component called <Title> equivalent to <h1> 
 //with styles defined between "`"
@@ -11,9 +13,20 @@ import { GlobalStyle } from './styles/global';
 `;*/
 
 export function App() {
+
+  const [isNewTransactionModalOpen, setIsNewTransactionModalOpen] = useState(false);
+
   return (
     <>
-      <Header />
+      <Header onSetIsNewTransactionModalOpen={setIsNewTransactionModalOpen}/>
+
+      <Modal
+          isOpen={isNewTransactionModalOpen}
+          onRequestClose={() => setIsNewTransactionModalOpen(false)}
+        >
+          <h2>Cadastrar Transação</h2>
+      </Modal>
+
       <Dashboard />
       <GlobalStyle />
     </>

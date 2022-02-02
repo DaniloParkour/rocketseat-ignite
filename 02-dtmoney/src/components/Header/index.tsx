@@ -1,31 +1,23 @@
-import { useState } from 'react';
-import Modal from 'react-modal';
 import logoImg from '../../assets/logo.svg';
 import { Container, Content } from './styles';
 
-export function Header() {
+interface HeaderProps {
+  //Is a function that receive a boolean and not return value
+  onSetIsNewTransactionModalOpen: (value: boolean) => void;
+}
 
-  const [isNewTransactionModalOpen, setIsNewTransactionModalOpen] = useState(false);
+export function Header({ onSetIsNewTransactionModalOpen }: HeaderProps) {
 
-  //handle for functions that is called by any user interaction to UI
-  function handleSetOpenNewTransactionModal(value: boolean) {
-    setIsNewTransactionModalOpen(value);
-  }
+  //Function handleSetOpenNewTransactionModal moved to App.tsx. This component can
+  //receive the function by props to call in a other context
 
   return(
     <Container>
       <Content>
         <img src={logoImg} alt="dt money"/>
-        <button type="button" onClick={() => handleSetOpenNewTransactionModal(true)}>
+        <button type="button" onClick={() => onSetIsNewTransactionModalOpen(true)}>
           Nova Transação
         </button>
-
-        <Modal
-          isOpen={isNewTransactionModalOpen}
-          onRequestClose={() => setIsNewTransactionModalOpen(false)}
-        >
-          <h2>Cadastrar Transação</h2>
-        </Modal>
       </Content>
     </Container>
   )
