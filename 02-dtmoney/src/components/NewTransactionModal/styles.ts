@@ -47,7 +47,7 @@ export const Container = styled.form`
     transition: filter 0.2s;
 
     &:hover {
-      filter: opacity(0.9);
+      filter: brightness(0.9);
     }
   }
 
