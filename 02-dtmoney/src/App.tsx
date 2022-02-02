@@ -1,4 +1,5 @@
-import styled from 'styled-components';
+// import styled from 'styled-components';
+import { Header } from './components/Header';
 import { GlobalStyle } from './styles/global';
 
 //Create a styled component. Is a react component called <Title> equivalent to <h1> 
@@ -10,9 +11,9 @@ import { GlobalStyle } from './styles/global';
 
 export function App() {
   return (
-    <div className="App">
-      <h1>Hello World!</h1>
+    <>
+      <Header />
       <GlobalStyle />
-    </div>
+    </>
   );
 }
