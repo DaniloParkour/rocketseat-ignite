@@ -9,6 +9,8 @@ export const GlobalStyle = createGlobalStyle`
     --blue-light: #6933ff;
     --text-title: #363f5f;
     --text-body: #969cb3;
+    --input-background: #e7e9ee;
+    --input-border: #d7d7d7;
     --shape: #fff;
   }
 
@@ -57,6 +59,31 @@ export const GlobalStyle = createGlobalStyle`
   [disabled] {
     opacity: 0.6;
     cursor: not-allowed;
+  }
+
+  //Customize Styles To Application Modals
+  .react-modal-overlay {
+    background: rgba(0, 0, 0, 0.5);
+
+    //All screenspace 0 on top, left, bottom and right
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .react-modal-content {
+    width: 100%;
+    max-width: 576px;
+    background: var(--background);
+    padding: 3rem;
+    position: relative;
+    border-radius: 0.24rem;
   }
   
 `;
