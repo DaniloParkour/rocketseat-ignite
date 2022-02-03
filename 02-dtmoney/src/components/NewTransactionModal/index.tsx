@@ -4,9 +4,8 @@ import { Container, TransactionTypeContainer, RadioBox } from './styles';
 
 import incomeImg from '../../assets/income.svg';
 import outcomeImg from '../../assets/outcome.svg';
-import { FormEvent, useState, useContext } from 'react';
-import { api } from '../../services/api';
-import { TransactionsContext } from '../../TransactionsContext';
+import { FormEvent, useState } from 'react';
+import { useTransactions } from '../../hooks/useTransactions';
 
 interface NewTransactionModalProps {
   isOpen: boolean,
@@ -20,7 +19,8 @@ export function NewTransactionModal({ isOpen, onSetOpenModal} : NewTransactionMo
   const [amount, setAmount] = useState(0);
   const [category, setCategory] = useState("");
 
-  const { createTransaction } = useContext(TransactionsContext);
+  //const { createTransaction } = useContext(TransactionsContext);
+  const { createTransaction } = useTransactions();
 
   async function handleCreateNewTransaction(event: FormEvent) {
     event.preventDefault();

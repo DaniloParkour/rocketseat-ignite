@@ -5,7 +5,7 @@ import { Header } from './components/Header';
 import { GlobalStyle } from './styles/global';
 import Modal from 'react-modal';
 import { NewTransactionModal } from './components/NewTransactionModal';
-import { TransactionsProvider } from './TransactionsContext';
+import { TransactionsProvider } from './hooks/useTransactions';
 
 //Create a styled component. Is a react component called <Title> equivalent to <h1> 
 //with styles defined between "`"
