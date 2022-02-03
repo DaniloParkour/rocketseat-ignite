@@ -17,7 +17,7 @@ createServer({
   seeds(server) {
     server.db.loadData({
       //OBS: Is a Table name (model in plural)
-      transaction: [
+      transactions: [
         {
           id: 1, //ever has id numeric and autoincrement
           title: "Freelance Website",
@@ -29,7 +29,7 @@ createServer({
         {
           id: 2,
           title: "Aluguel",
-          type: "deposit",
+          type: "withdrawn",
           category: "Casa",
           amount: 800,
           createdAt: new Date("2021-10-12 09:32:12")

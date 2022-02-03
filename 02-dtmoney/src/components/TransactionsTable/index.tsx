@@ -1,12 +1,24 @@
-import { useEffect } from "react";
+import { Response } from "miragejs";
+import { useEffect, useState } from "react";
 import { api } from "../../services/api";
 import { Contanier } from "./styles";
 
+interface Transaction {
+  id: number;
+  title: string,
+  type: string,
+  category: string,
+  amount: number,
+  createdAt: string
+}
+
 export function TransactionsTable() {
+
+  const [transactions, setTransactions] = useState<Transaction[]>([]);
 
   useEffect(() => {
     api.get('transactions')
-      .then(data => console.log(data))
+      .then(resp => setTransactions(resp.data.transactions))
   }, []);
 
   return(
@@ -22,18 +34,14 @@ export function TransactionsTable() {
         </thead>
 
         <tbody>
-          <tr>
-            <td>Desenvolvimento de website</td>
-            <td className="deposit">R$12.000,00</td>
-            <td>Desenvolvimento</td>
-            <td>10/08/2021</td>
-          </tr>
-          <tr>
-            <td>Aluguel</td>
-            <td className="withdrawn">- R$1200,00</td>
-            <td>Casa</td>
-            <td>18/08/2021</td>
-          </tr>
+          {transactions.map(t => (
+            <tr key={t.id}>
+              <td>{t.title}</td>
+              <td className={t.type}>{t.amount}</td>
+              <td>{t.category}</td>
+              <td>{t.createdAt}</td>
+            </tr>
+          ))}
         </tbody>
       </table>
     </Contanier>
