@@ -36,11 +36,19 @@ export function NewTransactionModal({ isOpen, onSetOpenModal} : NewTransactionMo
         <input placeholder="Título" />
         <input placeholder="Valor" type="number" />
         <TransactionTypeContainer>
-          <RadioBox type="button" onClick={() => setType("deposit")}>
+          <RadioBox
+            type="button"
+            onClick={() => setType("deposit")}
+            isActive={type === "deposit"}
+          >
             <img src={incomeImg} alt="Entrada" />
             <span>Entrada</span>
           </RadioBox>
-          <RadioBox type="button" onClick={() => setType("withdrawn")}>
+          <RadioBox
+            type="button"
+            onClick={() => setType("withdrawn")}
+            isActive={type === "withdrawn"}
+          >
             <img src={outcomeImg} alt="Saída" />
             <span>Saída</span>
           </RadioBox>
