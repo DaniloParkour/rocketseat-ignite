@@ -5,7 +5,7 @@ import { Header } from './components/Header';
 import { GlobalStyle } from './styles/global';
 import Modal from 'react-modal';
 import { NewTransactionModal } from './components/NewTransactionModal';
-import { TransactionsContext } from './TransactionsContext';
+import { TransactionsProvider } from './TransactionsContext';
 
 //Create a styled component. Is a react component called <Title> equivalent to <h1> 
 //with styles defined between "`"
@@ -24,7 +24,7 @@ export function App() {
   const [isNewTransactionModalOpen, setIsNewTransactionModalOpen] = useState(false);
 
   return (
-    <TransactionsContext.Provider value={[]}>
+    <TransactionsProvider>
       <Header onSetIsNewTransactionModalOpen={setIsNewTransactionModalOpen}/>
 
       <NewTransactionModal
@@ -34,6 +34,6 @@ export function App() {
 
       <Dashboard />
       <GlobalStyle />
-      </TransactionsContext.Provider>
+      </TransactionsProvider>
   );
 }

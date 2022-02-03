@@ -1,26 +1,13 @@
 import { Response } from "miragejs";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { api } from "../../services/api";
+import { TransactionsContext } from "../../TransactionsContext";
 import { Contanier } from "./styles";
-
-interface Transaction {
-  id: number;
-  title: string,
-  type: string,
-  category: string,
-  amount: number,
-  createdAt: string
-}
 
 export function TransactionsTable() {
 
-  const [transactions, setTransactions] = useState<Transaction[]>([]);
-
-  useEffect(() => {
-    api.get('transactions')
-      .then(resp => setTransactions(resp.data.transactions))
-  }, []);
-
+  const transactionsContext = useContext(TransactionsContext);
+  
   return(
     <Contanier>
       <table>
@@ -34,7 +21,7 @@ export function TransactionsTable() {
         </thead>
 
         <tbody>
-          {transactions.map(t => (
+          {transactionsContext.map(t => (
             <tr key={t.id}>
               <td>{t.title}</td>
               <td className={t.type}>
