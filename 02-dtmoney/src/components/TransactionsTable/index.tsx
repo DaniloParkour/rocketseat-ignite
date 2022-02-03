@@ -6,7 +6,7 @@ import { Contanier } from "./styles";
 
 export function TransactionsTable() {
 
-  const transactionsContext = useContext(TransactionsContext);
+  const { transactions } = useContext(TransactionsContext);
   
   return(
     <Contanier>
@@ -21,7 +21,7 @@ export function TransactionsTable() {
         </thead>
 
         <tbody>
-          {transactionsContext.map(t => (
+          {transactions.map(t => (
             <tr key={t.id}>
               <td>{t.title}</td>
               <td className={t.type}>
