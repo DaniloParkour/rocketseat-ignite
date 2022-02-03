@@ -50,7 +50,7 @@ createServer({
       const data = JSON.parse(request.requestBody);
 
       //schema is the database
-      return schema.create('transaction', data);
+      return schema.create('transaction', {...data, createdAt: new Date()});
     });
 
   }
