@@ -1,5 +1,8 @@
 import Document, { Html, Head, Main, NextScript } from "next/document";
 
+//_document é um nivel ainda muito proximo ao HTML na etapa de renderização e não está
+//pronto para receber SCSS por exemplo
+
 //Precisamos por enquanto criar esse componente no modo de classe para o Next
 export default class MyDocument extends Document {
   render() {

@@ -3,7 +3,8 @@
 //Podemos usar também para SEO, entre outros ex: <meta>.
 import Head from 'next/head'
 
-import styles from '../../styles/home.module.scss'
+// removendo o uso desse css module
+//import styles from '../../styles/home.module.scss'
 
 export default function Home() {
   return (
@@ -11,7 +12,7 @@ export default function Home() {
       <Head>
         <title>Início | ig.news</title>
       </Head>
-      <h1 className={styles.title}>Hello <span>W</span>orld</h1>
+      <h1>Hello World</h1>
     </>
   )
 }
