@@ -1,4 +1,4 @@
-import { loadStripe } from "@stripe/stripe-js";
+import { loadStripe } from "@stripe/stripe-js"
 
 export async function getStripeJs() {
   //Como aqui roda no client-side, informamos aqui a chave pública do dashboard do stripe
