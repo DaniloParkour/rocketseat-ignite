@@ -4,7 +4,8 @@ import { stripe } from "../../../services/stripe"
 
 export async function saveSubscription(
   subscriptionId: string,
-  customerId: string
+  customerId: string,
+  createAction = false
 ) {
   //Salvar as informações na banco de dados
   //Buscar usuário no banco do fauna com o ID do curtomerId "stripe_customer_id"
@@ -34,11 +35,27 @@ export async function saveSubscription(
     price_id: subscription.items.data[0].price.id,
   }
 
-  await fauna.query(
-    q.Create(
-      q.Collection("subscription"),
+  if(createAction) {
+    await fauna.query(
+      q.Create(
+        q.Collection("subscription"),
+        { data: subscriptionData }
+      )
+    )
+  } else {
+    //Replace atualiza todo o registro, update atualiza um campo ou parte do registro
+    q.Replace(
+      q.Select(
+        'ref',
+        q.Get(
+          q.Match(
+            q.Index('subscription_by_id'),
+            subscriptionId
+          )
+        )
+      ),
       { data: subscriptionData }
     )
-  )
+  }
   
 }
